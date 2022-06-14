@@ -19,7 +19,7 @@ public class JwtFilter extends GenericFilterBean {
 
 	private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
 	
-	private static final String AUTHORIZATION_HEADER = "Authorization";
+	public static final String AUTHORIZATION_HEADER = "Authorization";
 	
 	private TokenProvider tokenProvider;
 	
@@ -38,9 +38,9 @@ public class JwtFilter extends GenericFilterBean {
 		if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
 			Authentication authentication = tokenProvider.getAuthentication(jwt);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
-			logger.debug("Security Context¿¡ '{}' ÀÎÁõ Á¤º¸ ÀúÀå. uri: {}", authentication.getName(), requestURI);;
+			logger.debug("Security Context ì— '{}' ì¸ì¦ ì •ë³´ ì €ì¥. uri: {}", authentication.getName(), requestURI);;
 		} else {
-			logger.debug("À¯È¿ÇÑ JWT ÅäÅ« ¾øÀ½. uri: {}", requestURI);
+			logger.debug("ìœ íš¨í•œ JWT í† í° ì—†ìŒ. uri: {}", requestURI);
 		}
 		
 		chain.doFilter(request, response);

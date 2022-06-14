@@ -42,7 +42,7 @@ public class TokenProvider implements InitializingBean {
 	private Key key;
 	
 	public TokenProvider(
-			@Value("${jwt.secret") String secret,
+			@Value("${jwt.secret}") String secret,
 			@Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds) {
 		this.secret = secret;
 		this.tokenValidityInMilliseconds = tokenValidityInSeconds = 1000;
@@ -94,13 +94,13 @@ public class TokenProvider implements InitializingBean {
 			
 			return true;
 		} catch (SignatureException e) {
-			logger.info("Àß¸øµÈ JWT ¼­¸í");
+			logger.info("ì˜ëª»ëœ JWT ì„œëª…");
 		} catch (ExpiredJwtException e) {
-			logger.info("¸¸·áµÈ JWT ÅäÅ«");
+			logger.info("ë§Œë£Œëœ JWT í† í°");
 		} catch (UnsupportedJwtException e) {
-			logger.info("Áö¿øµÇÁö ¾Ê´Â JWT ÅäÅ«");
+			logger.info("ì§€ì›ë˜ì§€ ì•ŠëŠ” JWT í† í°");
 		} catch (IllegalArgumentException e) {
-			logger.info("Àß¸øµÈ JWT ÅäÅ«");
+			logger.info("ì˜ëª»ëœ JWT í† í°");
 		}
 		
 		return false;

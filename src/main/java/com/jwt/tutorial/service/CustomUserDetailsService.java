@@ -30,6 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(username + " -> 를 찾을 수 없습니다."));
     }
 
+    // 로그인 시 DB 에서 유저, 권한 정보를 가져와서 User 객체 리턴
     private User createUser(String username, com.jwt.tutorial.entity.User user) {
         if (!user.isActivated()) {
             throw new RuntimeException(username + " -> 활성화되어 있지 않습니다.");
