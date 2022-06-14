@@ -36,6 +36,7 @@ public class UserController {
     }
 
     // ADMIN 권한만 허용
+    // 권한이 맞지 않을 경우 JwtAccessDeniedHandler 발생
     @GetMapping("/user/{username}")
     @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<User> getUserInfo(@PathVariable String username) {
